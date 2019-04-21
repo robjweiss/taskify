@@ -42,7 +42,7 @@
         <div class='ui bottom attached green basic button' v-show="!isEditing && task.done">
             Completed
         </div>
-        <div class='ui bottom attached red basic button' v-show="!isEditing && !task.done">
+        <div class='ui bottom attached red basic button' v-on:click="completeTask(task)" v-show="!isEditing && !task.done">
             Complete
         </div>
     </div>
@@ -65,13 +65,12 @@ export default {
         },
         deleteTask(task) {
             this.$emit('delete-task', task);
+        },
+        completeTask(task) {
+            this.$emit('complete-task', task);
         }
     }
 }
 </script>
-
-<style scoped>
-
-</style>
 
 
