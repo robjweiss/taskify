@@ -1,22 +1,40 @@
 <template>
     <div class='ui centered card'>
-        <div class='content'>
+        <div class='content' v-show="!isEditing">
             <div class='header'>
                 {{ task.title }}
             </div>
             <div class='meta'>
                 {{ task.project }}
             </div>
-            <div class='extra-content'>
-                <span class='right floated edit icon'>
-                    <i class='edit-icon'></i>
+            <div class='extra content'>
+                <span class='edit icon' v-on:click="showForm">
+                    <i class='edit icon'></i>
                 </span>
             </div>
         </div>
-        <div class='ui bottom attached green basic button' v-show="task.done">
+        <!-- Edit task from -->
+        <div class="content" v-show="isEditing">
+            <div class='ui form'>
+                <div class='field'>
+                    <label>Title</label>
+                    <input type='text' v-model="task.title" >
+                </div>
+                <div class='field'>
+                    <label>Project</label>
+                    <input type='text' v-model="task.project" >
+                </div>
+                <div class='ui two button attached buttons'>
+                    <button class='ui basic blue button' v-on:click="hideForm">
+                        Close X
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class='ui bottom attached green basic button' v-show="!isEditing && task.done">
             Completed
         </div>
-        <div class='ui bottom attached red basic button' v-show="!task.done">
+        <div class='ui bottom attached red basic button' v-show="!isEditing && !task.done">
             Complete
         </div>
     </div>
@@ -24,7 +42,20 @@
 
 <script>
 export default {
-    props: ['task']
+    props: ['task'],
+    data() {
+        return {
+            isEditing: false
+        };
+    },
+    methods: {
+        showForm() {
+            this.isEditing = true;
+        },
+        hideForm() {
+            this.isEditing = false;
+        }
+    }
 }
 </script>
 
