@@ -1,18 +1,20 @@
 <template>
   <div id="app">
     <task-list v-bind:tasks="tasks"></task-list>
+    <create-task v-on:add-task="addTask"></create-task>
   </div>
 </template>
 
 <script>
 import TaskList from './components/TaskList.vue'
+import CreateTask from './components/CreateTask.vue'
 
 export default {
   name: 'app',
   components: {
-    TaskList
+    TaskList,
+    CreateTask
   },
-
   data() {
     return {
       tasks: [
@@ -29,6 +31,11 @@ export default {
           done: true
         }
       ]
+    }
+  },
+  methods: {
+    addTask(task) {
+      this.tasks.push(task);
     }
   }
 }
