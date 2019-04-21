@@ -13,6 +13,7 @@
                 </span>
             </div>
         </div>
+
         <!-- Edit task from -->
         <div class="content" v-show="isEditing">
             <div class='ui form'>
@@ -31,6 +32,13 @@
                 </div>
             </div>
         </div>
+
+        <!-- Delete -->
+        <span class='right floated trash icon' v-on:click="deleteTask(task)">
+            <i class='trash icon'></i>
+        </span>
+
+        <!-- Buttons -->
         <div class='ui bottom attached green basic button' v-show="!isEditing && task.done">
             Completed
         </div>
@@ -54,6 +62,9 @@ export default {
         },
         hideForm() {
             this.isEditing = false;
+        },
+        deleteTask(task) {
+            this.$emit('delete-task', task);
         }
     }
 }
