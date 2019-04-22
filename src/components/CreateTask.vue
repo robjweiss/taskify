@@ -42,6 +42,8 @@ export default {
       this.isCreating = true;
     },
     closeForm() {
+      this.titleText = '';
+      this.projectText = '';
       this.isCreating = false;
     },
     sendForm() {
