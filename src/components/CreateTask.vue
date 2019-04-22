@@ -29,6 +29,8 @@
 </template>
 
 <script>
+const uuidv4 = require('uuid/v4');
+
 export default {
   data() {
     return {
@@ -48,9 +50,11 @@ export default {
     },
     sendForm() {
         if (this.titleText.length > 0 && this.projectText.length > 0) {
+            const id = uuidv4();
             const title = this.titleText;
             const project = this.projectText;
             this.$emit('add-task', {
+                id,
                 title,
                 project,
                 done: false,

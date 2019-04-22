@@ -6,6 +6,8 @@
 </template>
 
 <script>
+const uuidv4 = require('uuid/v4');
+
 import TaskList from './components/TaskList.vue'
 import CreateTask from './components/CreateTask.vue'
 
@@ -19,13 +21,13 @@ export default {
     return {
       tasks: [
         {
-          id: 1,
+          id: uuidv4(),
           title: 'Todo A',
           project: 'Project A',
           done: false
         },
         {
-          id: 2,
+          id: uuidv4(),
           title: 'Todo B',
           project: 'Project B',
           done: true
