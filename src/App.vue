@@ -22,14 +22,14 @@ export default {
       tasks: [
         {
           id: uuidv4(),
-          title: 'Todo A',
-          project: 'Project A',
+          title: 'Paint the Fence',
+          project: 'Buy paint at the store',
           done: false
         },
         {
           id: uuidv4(),
-          title: 'Todo B',
-          project: 'Project B',
+          title: 'Grocery Shopping',
+          project: 'Pick up milk',
           done: true
         }
       ]
